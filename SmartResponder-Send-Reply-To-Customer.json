@@ -1,0 +1,16 @@
+{
+  "Comment": "Step Function to save four eye check approval and send final reply to customer",
+  "StartAt": "Save 4 Eye Check Approval",
+  "States": {
+    "Save 4 Eye Check Approval": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-west-2:XXXXXXXXXXXXXX:function:submit4EyeCheckApproval-SR",
+      "Next": "Send Reply to Customer"
+    },
+    "Send Reply to Customer": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-west-2:XXXXXXXXXXXXXX:function:sendEmailReplyToCustomer-SR",
+      "End": true
+    }
+  }
+}

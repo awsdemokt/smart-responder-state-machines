@@ -1,0 +1,16 @@
+{
+  "Comment": "A simple AWS Step Functions state machine that automates a call center support session.",
+  "StartAt": "Translate and Save Travel Desk Reply",
+  "States": {
+    "Translate and Save Travel Desk Reply": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-west-2:XXXXXXXXXXXXXX:function:translateAndSaveTravelDeskReply-SR",
+      "Next": "Push Travel Desk Reply To 4 Eye Check Approver"
+    },
+    "Push Travel Desk Reply To 4 Eye Check Approver": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-west-2:XXXXXXXXXXXXXX:function:pushTravelDeskDraftedReplyTo4EyeCheckApprover-SR",
+      "End": true
+    }
+  }
+}

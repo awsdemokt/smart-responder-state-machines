@@ -1,0 +1,26 @@
+{
+  "Comment": "SmartResponder Process Received Emails Workflow",
+  "StartAt": "Read and Save Received Email",
+  "States": {
+    "Read and Save Received Email": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-west-2:XXXXXXXXXXXXXX:function:saveReceivedEmail-SR",
+      "Next": "Translate Received Email To English"
+    },
+    "Translate Received Email To English": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-west-2:XXXXXXXXXXXXXX:function:translateReceivedEmailToEnglish-SR",
+      "Next": "Perform Sentiment Analysis"
+    },
+    "Perform Sentiment Analysis": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-west-2:XXXXXXXXXXXXXX:function:analyseSentimentOnReceivedEmail-SR",
+      "Next": "Push Email to Travel Desk"
+    },
+    "Push Email to Travel Desk": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-west-2:XXXXXXXXXXXXXX:function:pushReceivedEmailToTravelDesk-SR",
+      "End": true
+    }
+ }
+}
